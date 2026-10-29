@@ -97,7 +97,17 @@
     .product-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
     .product-card { background:white; border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; box-shadow:0 5px 18px rgba(23,63,70,.035); display:flex; flex-direction:column; min-width:0; }
     .product-image { aspect-ratio:4/3; background:linear-gradient(135deg,#f8e3e7,#e8f3f0); display:grid; place-items:center; overflow:hidden; }
-    .product-image img { width:100%; height:100%; object-fit:cover; display:block; }
+    .product-image img { width:100%; height:100%; object-fit:cover; display:block; cursor:zoom-in; transition:transform .22s ease; }
+    .product-image:hover img { transform:scale(1.045); }
+    .image-hint { position:absolute; bottom:10px; right:10px; z-index:1; padding:5px 8px; border-radius:999px; background:rgba(23,63,70,.86); color:#fff; font-size:.75rem; opacity:0; transition:opacity .2s ease; pointer-events:none; }
+    .product-image { position:relative; }
+    .product-image:hover .image-hint, .product-image:focus-within .image-hint { opacity:1; }
+    .image-lightbox { position:fixed; inset:0; z-index:1000; display:none; align-items:center; justify-content:center; padding:28px; background:rgba(10,18,20,.9); }
+    .image-lightbox.open { display:flex; }
+    .image-lightbox img { display:block; max-width:min(96vw,1400px); max-height:88vh; width:auto; height:auto; object-fit:contain; border-radius:10px; box-shadow:0 18px 60px rgba(0,0,0,.35); }
+    .lightbox-close { position:absolute; top:16px; right:20px; width:46px; height:46px; display:grid; place-items:center; border:0; border-radius:50%; background:#fff; color:#173f46; font-size:2rem; line-height:1; cursor:pointer; box-shadow:0 4px 18px rgba(0,0,0,.25); }
+    .lightbox-close:hover { background:#f5c6d0; }
+    .lightbox-caption { position:absolute; bottom:12px; left:16px; right:16px; text-align:center; color:#fff; font-size:.9rem; }
     .image-placeholder { display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; gap:8px; color:var(--ink); padding:20px; width:100%; height:100%; }
     .image-placeholder span { font-size:3rem; }
     .image-placeholder small { color:var(--muted); }
@@ -223,6 +233,7 @@
             <button class="filter" data-filter="fitness">Fitness</button>
             <button class="filter" data-filter="home">Home & gadgets</button>
             <button class="filter" data-filter="decor">Décor & lighting</button>
+            <button class="filter" data-filter="trending">Trending</button>
           </div>
           <input class="search" type="search" id="productSearch" placeholder="Search products…" aria-label="Search products">
         </div>
@@ -231,6 +242,7 @@
           <article class="product-card" data-category="fitness" data-search="adjustable inner outer thigh exerciser hip trainer leg workout pink">
             <div class="product-image">
               <img src="images/Pink Thigh Exerciser Home Workout Guide.png" alt="Adjustable inner and outer thigh exerciser">
+              <span class="image-hint" aria-hidden="true">Click to view full image</span>
             </div>
             <div class="product-content">
               <span class="pill">Fitness finds</span>
@@ -244,6 +256,7 @@
           <article class="product-card" data-category="fitness" data-search="Flexnest adjustable foldable gym bench home strength training">
             <div class="product-image">
               <img src="images/FLEXNEST Adjustable Gym Bench Showcase.png" alt="Adjustable Gym Bench">
+              <span class="image-hint" aria-hidden="true">Click to view full image</span>
             </div>
             <div class="product-content">
               <span class="pill">Fitness finds</span>
@@ -257,6 +270,7 @@
           <article class="product-card" data-category="fitness" data-search="Lifelong fitness stepper aerobic stepper home workout">
             <div class="product-image">
               <img src="images/Lifelong Fitness Stepper_ Stay Active.png" alt="Fitness Stepper">
+              <span class="image-hint" aria-hidden="true">Click to view full image</span>
             </div>
             <div class="product-content">
               <span class="pill">Fitness finds</span>
@@ -270,6 +284,7 @@
           <article class="product-card" data-category="fitness" data-search="100 workout cards bodyweight resistance band exercise cards">
             <div class="product-image">
               <img src="images/Bodyweight Resistance Workout Cards.png" alt="Bodyweight & Resistance Workout Cards">
+              <span class="image-hint" aria-hidden="true">Click to view full image</span>
             </div>
             <div class="product-content">
               <span class="pill">Fitness finds</span>
@@ -283,6 +298,7 @@
           <article class="product-card" data-category="decor" data-search="Desidiya 40 metre multicolour LED rope light Diwali balcony terrace">
             <div class="product-image">
               <img src="images/DesiDiya 40 Metre LED Rope Light.png" alt="Multicolour LED Rope Light">
+              <span class="image-hint" aria-hidden="true">Click to view full image</span>
             </div>
             <div class="product-content">
               <span class="pill">Décor & lighting</span>
@@ -295,13 +311,14 @@
 
           
           <article class="product-card"
-                  data-category="home"
-                  data-search="Honeywell 12-in-1 USB-C Dock Hub docking station laptop accessories">
+                  data-category="home trending"
+                  data-search="Honeywell 12-in-1 USB-C Dock Hub docking station laptop accessories trending tech gadget">
 
             <div class="product-image">
               <img
                 src="images/Honeywell 12-in-1 USB-C Dock Hub.png"
                 alt="Honeywell 12-in-1 USB-C Docking Station with wireless charging">
+              <span class="image-hint" aria-hidden="true">Click to view full image</span>
             </div>
 
             <div class="product-content">
@@ -389,6 +406,12 @@
     </div>
   </footer>
 
+  <div class="image-lightbox" id="imageLightbox" role="dialog" aria-modal="true" aria-label="Full-size product image" aria-hidden="true">
+    <button class="lightbox-close" id="lightboxClose" type="button" aria-label="Close full-size image">×</button>
+    <img id="lightboxImage" src="" alt="">
+    <div class="lightbox-caption" id="lightboxCaption">Click outside the image or press Escape to close</div>
+  </div>
+
   <script>
     const menuToggle = document.getElementById('menuToggle');
     const navLinks = document.getElementById('navLinks');
@@ -412,8 +435,8 @@
       const q = search.value.trim().toLowerCase();
       let visible = 0;
       cards.forEach(card => {
-        const categoryMatch = activeFilter === 'all' || card.dataset.category === activeFilter ||
-          (activeFilter === 'home' && card.dataset.category === 'home');
+        const categories = (card.dataset.category || '').split(/\s+/).filter(Boolean);
+        const categoryMatch = activeFilter === 'all' || categories.includes(activeFilter);
         const searchMatch = !q || (card.dataset.search + ' ' + card.innerText).toLowerCase().includes(q);
         const show = categoryMatch && searchMatch;
         card.style.display = show ? 'flex' : 'none';
@@ -447,6 +470,51 @@
           alert('Add your own tagged Amazon Associates product URL to this button before publishing.');
         }
       });
+    });
+
+    // Open product images in a full-size lightbox so the entire image can be viewed.
+    const lightbox = document.getElementById('imageLightbox');
+    const lightboxImage = document.getElementById('lightboxImage');
+    const lightboxClose = document.getElementById('lightboxClose');
+    const lightboxCaption = document.getElementById('lightboxCaption');
+    let previouslyFocusedElement = null;
+
+    document.querySelectorAll('.product-image img').forEach(img => {
+      img.tabIndex = 0;
+      img.setAttribute('role', 'button');
+      img.setAttribute('aria-label', `View full-size image: ${img.alt || 'product image'}`);
+      const openImage = () => {
+        previouslyFocusedElement = document.activeElement;
+        lightboxImage.src = img.currentSrc || img.src;
+        lightboxImage.alt = img.alt || 'Full-size product image';
+        lightboxCaption.textContent = img.alt || 'Product image';
+        lightbox.classList.add('open');
+        lightbox.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        lightboxClose.focus();
+      };
+      img.addEventListener('click', openImage);
+      img.addEventListener('keydown', event => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          openImage();
+        }
+      });
+    });
+
+    function closeLightbox() {
+      lightbox.classList.remove('open');
+      lightbox.setAttribute('aria-hidden', 'true');
+      lightboxImage.src = '';
+      document.body.style.overflow = '';
+      if (previouslyFocusedElement) previouslyFocusedElement.focus();
+    }
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', event => {
+      if (event.target === lightbox) closeLightbox();
+    });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && lightbox.classList.contains('open')) closeLightbox();
     });
   </script>
 </body>
