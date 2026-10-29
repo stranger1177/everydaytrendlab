@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Discover useful fitness accessories, home gadgets, festive lighting and everyday finds curated by EverydayTrendLab.">
+  <meta name="theme-color" content="#173f46">
+  <title>EverydayTrendLab | Discover Useful Finds</title>
+  <style>
+    :root {
+      --ink: #173f46;
+      --ink-soft: #315e64;
+      --pink: #f5c6d0;
+      --pink-pale: #fff0f3;
+      --teal-pale: #e9f4f2;
+      --cream: #fffaf5;
+      --muted: #68797a;
+      --line: #e4e9e7;
+      --white: #fff;
+      --shadow: 0 12px 34px rgba(23,63,70,.09);
+      --radius: 22px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; background: var(--cream); color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.55;
+    }
+    .visual-collage {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+        align-items: stretch;
+    }
+
+    .visual-tile {
+        min-height: 145px;
+        transform: none;
+        display: flex;
+        align-items: end;
+        padding: 15px;
+        border-radius: 20px;
+    }
+    a { color: inherit; }
+    .container { width: min(1120px, calc(100% - 36px)); margin-inline: auto; }
+    .topbar { background: var(--ink); color: white; font-size: .82rem; text-align: center; padding: 9px 16px; }
+    header { position: sticky; top: 0; z-index: 20; background: rgba(255,250,245,.94); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(228,233,231,.8); }
+    .nav { display:flex; align-items:center; justify-content:space-between; gap:20px; padding: 16px 0; }
+    .brand { display:flex; align-items:center; gap:11px; text-decoration:none; font-weight:850; letter-spacing:-.04em; font-size:1.15rem; }
+    /* .brand-logo { display:block; width:44px; height:44px; flex:0 0 44px; object-fit:contain; border-radius:14px; } */
+    .brand-logo {
+        display: block;
+        width: 44px;
+        height: 44px;
+        flex: 0 0 44px;
+        object-fit: cover;
+        border-radius: 50%;
+    }
+    .nav-links { display:flex; align-items:center; gap:22px; }
+    .nav-links a { font-size:.93rem; font-weight:650; text-decoration:none; }
+    .nav-links a:hover { color:#a44d67; }
+    .menu-toggle { display:none; border:1px solid var(--line); background:white; border-radius:12px; padding:9px 12px; color:var(--ink); font-weight:700; }
+    .hero { padding: 56px 0 44px; }
+    .hero-grid { display:grid; grid-template-columns: 1.05fr .95fr; gap:38px; align-items:center; }
+    .eyebrow { display:inline-flex; align-items:center; gap:8px; background:var(--pink-pale); border:1px solid #f7d9df; color:#85485b; border-radius:999px; padding:7px 12px; font-weight:750; font-size:.78rem; letter-spacing:.06em; text-transform:uppercase; }
+    h1 { font-size:clamp(2.55rem, 5vw, 4.6rem); line-height:1.03; letter-spacing:-.065em; margin:18px 0; max-width:680px; }
+    .hero p { color:var(--muted); font-size:1.1rem; max-width:590px; }
+    .hero-actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:26px; }
+    .btn { display:inline-flex; justify-content:center; align-items:center; gap:8px; text-decoration:none; border:0; border-radius:13px; padding:13px 17px; font:inherit; font-weight:800; cursor:pointer; transition:transform .18s, box-shadow .18s; }
+    .btn:hover { transform:translateY(-2px); box-shadow:var(--shadow); }
+    .btn-primary { background:var(--ink); color:white; }
+    .btn-secondary { background:white; border:1px solid var(--line); color:var(--ink); }
+    .hero-visual { min-height:390px; border-radius:30px; background:linear-gradient(135deg,#f8d8df,#e4f2ef 58%,#f5e8d5); padding:22px; position:relative; overflow:hidden; }
+    .hero-visual::before,.hero-visual::after { content:""; position:absolute; border-radius:50%; background:rgba(255,255,255,.38); }
+    .hero-visual::before { width:240px;height:240px;top:-70px;right:-55px; }
+    .hero-visual::after { width:180px;height:180px;bottom:-75px;left:-40px; }
+    .visual-label { position:relative; z-index:1; display:inline-block; background:rgba(255,255,255,.8); padding:8px 12px; border-radius:999px; font-size:.8rem; font-weight:800; }
+    .visual-collage { position:relative; z-index:1; display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:12px; margin-top:20px; align-items:stretch; }
+    .visual-tile { min-height:145px; min-width:0; transform:none; display:flex; align-items:end; padding:15px; border-radius:20px; background:rgba(255,255,255,.76); box-shadow:0 8px 24px rgba(23,63,70,.06); font-weight:850; }
+    .visual-tile span { font-size:2rem; display:block; margin-bottom:5px; }
+    section { padding:45px 0; }
+    .section-heading { display:flex; justify-content:space-between; align-items:end; gap:18px; margin-bottom:24px; }
+    .section-heading h2 { font-size:clamp(1.8rem,3vw,2.6rem); letter-spacing:-.045em; line-height:1.1; margin:0 0 8px; }
+    .section-heading p { margin:0; color:var(--muted); max-width:620px; }
+    .category-row { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+    .category { text-decoration:none; border:1px solid var(--line); border-radius:18px; background:white; padding:18px; min-height:132px; transition:transform .18s, box-shadow .18s; }
+    .category:hover { transform:translateY(-3px); box-shadow:var(--shadow); }
+    .category .emoji { display:block; font-size:1.9rem; margin-bottom:9px; }
+    .category strong { display:block; font-size:1rem; }
+    .category small { color:var(--muted); display:block; margin-top:4px; }
+    .toolbar { display:flex; justify-content:space-between; align-items:center; gap:14px; margin-bottom:20px; flex-wrap:wrap; }
+    .filters { display:flex; gap:8px; flex-wrap:wrap; }
+    .filter { border:1px solid var(--line); border-radius:999px; background:white; color:var(--ink); padding:9px 14px; font:inherit; font-size:.88rem; font-weight:750; cursor:pointer; }
+    .filter.active,.filter:hover { background:var(--ink); color:white; border-color:var(--ink); }
+    .search { border:1px solid var(--line); border-radius:12px; background:white; padding:11px 14px; font:inherit; width:min(100%,280px); }
+    .product-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+    .product-card { background:white; border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; box-shadow:0 5px 18px rgba(23,63,70,.035); display:flex; flex-direction:column; min-width:0; }
+    .product-image { aspect-ratio:4/3; background:linear-gradient(135deg,#f8e3e7,#e8f3f0); display:grid; place-items:center; overflow:hidden; }
+    .product-image img { width:100%; height:100%; object-fit:cover; display:block; }
+    .image-placeholder { display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; gap:8px; color:var(--ink); padding:20px; width:100%; height:100%; }
+    .image-placeholder span { font-size:3rem; }
+    .image-placeholder small { color:var(--muted); }
+    .product-content { padding:18px; display:flex; flex-direction:column; flex:1; }
+    .pill { align-self:flex-start; background:var(--teal-pale); color:#315e64; font-size:.73rem; font-weight:850; padding:5px 9px; border-radius:999px; margin-bottom:10px; }
+    .product-card h3 { margin:0 0 8px; font-size:1.12rem; line-height:1.25; letter-spacing:-.02em; }
+    .product-card p { color:var(--muted); font-size:.93rem; margin:0 0 14px; }
+    .feature-list { list-style:none; padding:0; margin:0 0 18px; color:#496466; font-size:.86rem; }
+    .feature-list li { margin:5px 0; }
+    .feature-list li::before { content:"✓"; color:#31806e; font-weight:900; margin-right:7px; }
+    .product-content .btn { margin-top:auto; width:100%; }
+    .note { font-size:.83rem; color:var(--muted); margin-top:14px; }
+    .empty-state { display:none; padding:25px; border:1px dashed var(--line); border-radius:16px; text-align:center; color:var(--muted); background:white; }
+    .about-grid { display:grid; grid-template-columns: .9fr 1.1fr; gap:34px; align-items:center; }
+    .about-card { background:var(--pink-pale); border-radius:26px; padding:30px; }
+    .about-card .big-emoji { font-size:3rem; }
+    .about-card h3 { font-size:1.6rem; line-height:1.15; margin:12px 0; letter-spacing:-.04em; }
+    .about-copy p { color:var(--muted); }
+    .disclosure { background:#f1f6f4; border:1px solid #dceae5; border-radius:18px; padding:19px 20px; font-size:.9rem; color:#315e64; }
+    .disclosure strong { display:block; margin-bottom:5px; color:var(--ink); }
+    footer { background:var(--ink); color:#e6f0ee; padding:34px 0 24px; margin-top:25px; }
+    .footer-grid { display:grid; grid-template-columns:1fr auto; gap:25px; align-items:start; }
+    footer p { color:#bfd4d0; font-size:.88rem; max-width:600px; }
+    footer a { color:white; }
+    .footer-links { display:flex; gap:16px; flex-wrap:wrap; font-size:.9rem; }
+
+    .social-links { display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-top:14px; }
+    .social-links a { display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:9px 12px; border:1px solid rgba(255,255,255,.24); border-radius:12px; color:white; text-decoration:none; font-size:.88rem; font-weight:750; }
+    .social-links a:hover { background:rgba(255,255,255,.12); }
+    .social-links svg { width:18px; height:18px; flex:0 0 18px; fill:currentColor; }
+    .copyright { border-top:1px solid rgba(255,255,255,.16); margin-top:22px; padding-top:17px; color:#bfd4d0; font-size:.8rem; }
+    @media (max-width:850px) {
+      .hero-grid,.about-grid { grid-template-columns:1fr; }
+      .hero { padding-top:35px; }
+      .hero-visual { min-height:300px; }
+      .category-row { grid-template-columns:repeat(2,1fr); }
+      .product-grid { grid-template-columns:repeat(2,1fr); }
+      .section-heading { align-items:start; flex-direction:column; }
+    }
+    @media (max-width:560px) {
+      .container { width:min(100% - 26px,1120px); }
+      .nav { padding:12px 0; }
+      .brand { font-size:1rem; }
+      .brand-logo { width:38px; height:38px; flex-basis:38px; }
+      .menu-toggle { display:block; }
+      .nav-links { display:none; position:absolute; top:100%; left:0; right:0; background:var(--cream); padding:15px 20px 20px; border-bottom:1px solid var(--line); flex-direction:column; align-items:stretch; gap:14px; }
+      .nav-links.open { display:flex; }
+      .hero { padding:32px 0 25px; }
+      .hero-visual { min-height:270px; padding:16px; }
+      .visual-tile { min-height:105px; padding:12px; font-size:.9rem; }
+      .visual-tile span { font-size:1.6rem; }
+      section { padding:32px 0; }
+      .category-row { gap:10px; }
+      .category { padding:14px; min-height:120px; }
+      .product-grid { grid-template-columns:1fr; gap:15px; }
+      .product-image { aspect-ratio:16/9; }
+      .product-content { padding:16px; }
+      .search { width:100%; }
+      .footer-grid { grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">Useful finds, thoughtful picks, everyday inspiration ✨</div>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#home" aria-label="EverydayTrendLab home">
+        <img class="brand-logo" src="images/EverydayTrendLab Shopping Badge.png" alt="" aria-hidden="true"><span>EverydayTrendLab</span>
+      </a>
+      <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="navLinks">Menu ☰</button>
+      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+        <a href="#categories">Categories</a><a href="#products">Featured finds</a><a href="#about">About</a><a href="#disclosure">Disclosure</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="home">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">✦ Curated everyday discoveries</span>
+          <h1>Discover trends.<br><span style="color:#b65c76">Find your</span> favorites.</h1>
+          <p>Explore useful fitness accessories, home essentials, colourful lighting and interesting products picked to make everyday life a little easier.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#products">Explore featured finds <span aria-hidden="true">↓</span></a>
+            <a class="btn btn-secondary" href="#categories">Browse categories</a>
+          </div>
+        </div>
+        <div class="hero-visual" aria-label="Featured categories illustration">
+          <span class="visual-label">The EverydayTrendLab edit</span>
+          <div class="visual-collage">
+            <div class="visual-tile"><div><span>💪</span>Fitness finds</div></div>
+            <div class="visual-tile"><div><span>🏡</span>Home essentials</div></div>
+            <div class="visual-tile"><div><span>💡</span>Decor & lighting</div></div>
+            <div class="visual-tile"><div><span>✨</span>Trending picks</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="categories">
+      <div class="container">
+        <div class="section-heading">
+          <div><h2>Explore by category</h2><p>Find inspiration by what you're shopping for.</p></div>
+        </div>
+        <div class="category-row">
+          <a class="category" href="#products" data-jump-category="fitness"><span class="emoji">💪</span><strong>Fitness finds</strong><small>Home gym & workout essentials</small></a>
+          <a class="category" href="#products" data-jump-category="home"><span class="emoji">🏡</span><strong>Home & gadgets</strong><small>Useful everyday products</small></a>
+          <a class="category" href="#products" data-jump-category="decor"><span class="emoji">💡</span><strong>Home décor</strong><small>Lighting & festive ideas</small></a>
+          <a class="category" href="#products" data-jump-category="trending"><span class="emoji">✨</span><strong>Trending finds</strong><small>Interesting discoveries & gifts</small></a>
+        </div>
+      </div>
+    </section>
+
+    <section id="products">
+      <div class="container">
+        <div class="section-heading">
+          <div><h2>Featured finds</h2><p>Quick introductions to products worth exploring. Check the listing for current details before buying.</p></div>
+        </div>
+        <div class="toolbar">
+          <div class="filters" role="group" aria-label="Filter products">
+            <button class="filter active" data-filter="all">All finds</button>
+            <button class="filter" data-filter="fitness">Fitness</button>
+            <button class="filter" data-filter="home">Home & gadgets</button>
+            <button class="filter" data-filter="decor">Décor & lighting</button>
+          </div>
+          <input class="search" type="search" id="productSearch" placeholder="Search products…" aria-label="Search products">
+        </div>
+        <div class="product-grid" id="productGrid">
+          <!-- Product links are placeholders. Replace each href with your own tagged Amazon Associates URL. -->
+          <article class="product-card" data-category="fitness" data-search="adjustable inner outer thigh exerciser hip trainer leg workout pink">
+            <div class="product-image">
+              <img src="images/Pink Thigh Exerciser Home Workout Guide.png" alt="Adjustable inner and outer thigh exerciser">
+            </div>
+            <div class="product-content">
+              <span class="pill">Fitness finds</span>
+              <h3>Adjustable Inner & Outer Thigh Exerciser</h3>
+              <p>A compact fitness accessory to add variety to your lower-body workout routine at home.</p>
+              <ul class="feature-list"><li>Adjustable resistance (verify listing)</li><li>Compact home-workout design</li><li>Check fit and instructions before use</li></ul>
+              <a class="btn btn-primary affiliate-link" href="https://link.amazon/B0hTSlv6Q" target="_blank" rel="sponsored nofollow noopener" data-product="Thigh Exerciser">Check on Amazon ↗</a>
+            </div>
+          </article>
+
+          <article class="product-card" data-category="fitness" data-search="Flexnest adjustable foldable gym bench home strength training">
+            <div class="product-image">
+              <img src="images/FLEXNEST Adjustable Gym Bench Showcase.png" alt="Adjustable Gym Bench">
+            </div>
+            <div class="product-content">
+              <span class="pill">Fitness finds</span>
+              <h3>Adjustable & Foldable Workout Bench</h3>
+              <p>A home-gym option to explore for strength-training routines and a more flexible workout setup.</p>
+              <ul class="feature-list"><li>Check available incline positions</li><li>Review weight capacity on listing</li><li>Confirm foldability and dimensions</li></ul>
+              <a class="btn btn-primary affiliate-link" href="https://link.amazon/B02MMoSjd" target="_blank" rel="sponsored nofollow noopener" data-product="Adjustable Gym Bench">Check on Amazon ↗</a>
+            </div>
+          </article>
+
+          <article class="product-card" data-category="fitness" data-search="Lifelong fitness stepper aerobic stepper home workout">
+            <div class="product-image">
+              <img src="images/Lifelong Fitness Stepper_ Stay Active.png" alt="Fitness Stepper">
+            </div>
+            <div class="product-content">
+              <span class="pill">Fitness finds</span>
+              <h3>Lifelong Fitness Stepper</h3>
+              <p>A compact stepper to consider for adding step-based movement to a home exercise routine.</p>
+              <ul class="feature-list"><li>Review platform size and grip</li><li>Check recommended user limits</li><li>Choose a safe, level workout area</li></ul>
+              <a class="btn btn-primary affiliate-link" href="https://link.amazon/B0ej773iN" target="_blank" rel="sponsored nofollow noopener" data-product="Lifelong Fitness Stepper">Check on Amazon ↗</a>
+            </div>
+          </article>
+
+          <article class="product-card" data-category="fitness" data-search="100 workout cards bodyweight resistance band exercise cards">
+            <div class="product-image">
+              <img src="images/Bodyweight Resistance Workout Cards.png" alt="Bodyweight & Resistance Workout Cards">
+            </div>
+            <div class="product-content">
+              <span class="pill">Fitness finds</span>
+              <h3>Bodyweight & Resistance Workout Cards</h3>
+              <p>Exercise-card inspiration for planning a varied workout at home or in the gym.</p>
+              <ul class="feature-list"><li>Review card count and exercise guide</li><li>Check whether bands are included</li><li>Match exercises to your ability</li></ul>
+              <a class="btn btn-primary affiliate-link" href="https://link.amazon/B0b8ydUOh" target="_blank" rel="sponsored nofollow noopener" data-product="Workout Cards">Check on Amazon ↗</a>
+            </div>
+          </article>
+
+          <article class="product-card" data-category="decor" data-search="Desidiya 40 metre multicolour LED rope light Diwali balcony terrace">
+            <div class="product-image">
+              <img src="images/DesiDiya 40 Metre LED Rope Light.png" alt="Multicolour LED Rope Light">
+            </div>
+            <div class="product-content">
+              <span class="pill">Décor & lighting</span>
+              <h3>Desidiya 40 Metre Multicolour LED Rope Light</h3>
+              <p>Colourful lighting inspiration for festive décor, balconies, gates and celebration spaces.</p>
+              <ul class="feature-list"><li>Confirm length and colours</li><li>Check indoor/outdoor suitability</li><li>Review plug and safety instructions</li></ul>
+              <a class="btn btn-primary affiliate-link" href="https://link.amazon/B07vJY2fZ" target="_blank" rel="sponsored nofollow noopener" data-product="LED Rope Light">Check on Amazon ↗</a>
+            </div>
+          </article>
+
+        </div>
+        <div class="empty-state" id="emptyState">No products match your search. Try another keyword or category.</div>
+        <p class="note">Product information is a starting summary only. Availability, specifications and prices can change; confirm details on Amazon before purchasing.</p>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container about-grid">
+        <div class="about-card">
+          <div class="big-emoji">✨</div>
+          <h3>Little discoveries.<br>Everyday inspiration.</h3>
+          <p>Curated with curiosity, for everyday life.</p>
+        </div>
+        <div class="about-copy">
+          <span class="eyebrow">About the brand</span>
+          <h2>Welcome to EverydayTrendLab</h2>
+          <p>We share product discoveries across fitness, home décor, useful gadgets and lifestyle essentials. Our goal is to help you explore interesting options and find products that suit your needs.</p>
+          <p>We encourage you to read product details, compare options and make the choice that works best for you. Product links may earn us a commission, at no extra cost to you.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="disclosure">
+      <div class="container">
+        <div class="disclosure">
+          <strong>Affiliate disclosure</strong>
+          As an Amazon Associate I earn from qualifying purchases. Some links on this website are affiliate links, which means we may earn a commission if you make a qualifying purchase through them, at no additional cost to you. We aim to identify affiliate links clearly. Always check the product page for current pricing, availability, specifications and seller information.
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a class="brand" href="#home" style="color:white"><img class="brand-logo" src="images/EverydayTrendLab Shopping Badge.png" alt="" aria-hidden="true"><span>EverydayTrendLab</span></a>
+          <p>Discover useful finds, fitness essentials, home ideas and everyday inspiration.</p>
+          <p>As an Amazon Associate I earn from qualifying purchases.</p>
+          <div class="social-links" aria-label="Social media links">
+            <a href="https://www.instagram.com/everydaytrendlab/" target="_blank" rel="noopener noreferrer" aria-label="Instagram (replace username)">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2Zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9a3.5 3.5 0 0 0 3.5-3.5v-9A3.5 3.5 0 0 0 16.5 4h-9ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Zm5.25-3.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5Z"/></svg>
+              Instagram
+            </a>
+            <!-- <a href="https://www.facebook.com/YOUR_FACEBOOK_PAGE/" target="_blank" rel="noopener noreferrer" aria-label="Facebook (replace page)">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 21v-8h2.7l.4-3h-3.1V8.1c0-.9.3-1.5 1.6-1.5h1.7V3.9c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3V10H7.3v3h2.8v8h3.4Z"/></svg>
+              Facebook
+            </a> -->
+          </div>
+        </div>
+        <div class="footer-links"><a href="#products">Featured finds</a><a href="#about">About</a><a href="#disclosure">Affiliate disclosure</a></div>
+      </div>
+      <div class="copyright">© <span id="year"></span> EverydayTrendLab. Product links and details should be checked before publishing.</div>
+    </div>
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    menuToggle.addEventListener('click', () => {
+      const open = navLinks.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', String(open));
+    });
+    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      menuToggle.setAttribute('aria-expanded', 'false');
+    }));
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const filters = document.querySelectorAll('.filter');
+    const cards = [...document.querySelectorAll('.product-card')];
+    const search = document.getElementById('productSearch');
+    const emptyState = document.getElementById('emptyState');
+    let activeFilter = 'all';
+
+    function updateProducts() {
+      const q = search.value.trim().toLowerCase();
+      let visible = 0;
+      cards.forEach(card => {
+        const categoryMatch = activeFilter === 'all' || card.dataset.category === activeFilter ||
+          (activeFilter === 'home' && card.dataset.category === 'home');
+        const searchMatch = !q || (card.dataset.search + ' ' + card.innerText).toLowerCase().includes(q);
+        const show = categoryMatch && searchMatch;
+        card.style.display = show ? 'flex' : 'none';
+        if (show) visible++;
+      });
+      emptyState.style.display = visible ? 'none' : 'block';
+    }
+    filters.forEach(button => button.addEventListener('click', () => {
+      filters.forEach(b => b.classList.remove('active'));
+      button.classList.add('active');
+      activeFilter = button.dataset.filter;
+      updateProducts();
+    }));
+    search.addEventListener('input', updateProducts);
+    document.querySelectorAll('[data-jump-category]').forEach(link => link.addEventListener('click', () => {
+      activeFilter = link.dataset.jumpCategory;
+      filters.forEach(b => b.classList.toggle('active', b.dataset.filter === activeFilter));
+      if (!document.querySelector(`.filter[data-filter="${activeFilter}"]`)) {
+        filters.forEach(b => b.classList.toggle('active', b.dataset.filter === 'all'));
+        activeFilter = 'all';
+      }
+      updateProducts();
+    }));
+
+    // Prevent accidental publishing of placeholder affiliate destinations.
+    document.querySelectorAll('.affiliate-link').forEach(link => {
+      link.addEventListener('click', event => {
+        const href = link.getAttribute('href') || '';
+        if (href === 'https://www.amazon.in/' || href.includes('YOUR_ASSOCIATE_TAG') || href.includes('PASTE_YOUR')) {
+          event.preventDefault();
+          alert('Add your own tagged Amazon Associates product URL to this button before publishing.');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
